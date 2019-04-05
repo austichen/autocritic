@@ -1,0 +1,1 @@
+web: gunicorn autocritic.wsgi
