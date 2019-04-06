@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="word-cloud container">
                 <div class="word-cloud">
                     <h3 class="green ui header">Most frequent positive words</h3>
-                    <img src="/public/reviews/positiveWordCloud.png?dummy=${Math.floor(rating)}">
+                    <img src="/static/reviews/positiveWordCloud.png?dummy=${Math.floor(rating)}">
                 </div>
                 <div class="word-cloud">
                     <h3 class="black ui header">Most frequent negative words</h3>
-                    <img src="/public/reviews/negativeWordCloud.png?dummy=${Math.floor(rating)}">
+                    <img src="/static/reviews/negativeWordCloud.png?dummy=${Math.floor(rating)}">
                 </div>
             <div/>
         `

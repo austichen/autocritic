@@ -62,6 +62,6 @@ def movie(request):
         f.close()
 
         rating = sent_analysis.run('movie_list.txt', movieTitle.lower().split(' '))
-        return JsonResponse({'title': movieTitle, 'rating': rating, 'imageURL': imageUrl, 'tomatometerScore': tomatometerScore})
+        return JsonResponse({'title': movieTitle, 'rating': rating, 'imageURL': imageUrl, 'numReviews': len(reviewList), 'tomatometerScore': tomatometerScore})
         
 
