@@ -47,12 +47,15 @@ def preProcessReviews(reviews):
 
 def generateWordCloud(stopwords, reviews, pos = True):
     filename = os.path.join(os.getcwd(),'reviews/static/reviews/negativeWordCloud.png')
+    filenameProd = 'staticfiles/negativeWordCloud.png'
     bgc = "black"
     if pos:
         filename = os.path.join(os.getcwd(),'reviews/static/reviews/positiveWordCloud.png')
+        filenameProd = 'staticfiles/positiveWordCloud.png'
         bgc = "white"
     words = " ".join(reviews)
     wordcloud = WordCloud(stopwords=stopwords, background_color=bgc).generate(words)
     wordcloud.to_file(filename)
+    wordcloud.to_file(filenameProd)
 
 

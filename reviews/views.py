@@ -30,7 +30,6 @@ def movie(request):
             return response
 
         res = requests.get(link)
-        print(link)
         rtHtml = BeautifulSoup(res.text, 'html.parser')
         res = requests.get(link.replace('/reviews', ''))
         rtHomeHtml = BeautifulSoup(res.text, 'html.parser')
