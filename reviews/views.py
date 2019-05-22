@@ -18,14 +18,15 @@ def movie(request):
             return response
         res = requests.get('https://google.com/search?q=' + movieTitle + '%20site:rottentomatoes.com/m')
         googleHtml = BeautifulSoup(res.text, 'html.parser')
-        searchResults = googleHtml.select('.g a')
+        searchResults = googleHtml.select('#search a')
+        link = None
         for result in searchResults:
             if 'https://www.rottentomatoes.com/m/' in result['href']:
                 link = result['href'].split('?q=')[1].split('&')[0]
                 if '/reviews' not in result['href']:
                     link += '/reviews'
                 break
-        if not link:
+        if link is None:
             response = JsonResponse({'message': 'Internal server error: Unable to find movie'}, status = 500)
             return response
 
@@ -37,7 +38,7 @@ def movie(request):
         imageUrl = rtHtml.select('.panel-body.content_body img')[0]['src']
         movieTitle = rtHtml.select('.panel-body.content_body h2 > a')[0].text
         reviews = rtHtml.select('#reviews .the_review')
-        tomatometerScore = int(re.sub(r'[^0-9]', '', rtHomeHtml.select('h1.mop-ratings-wrap__score span.mop-ratings-wrap__percentage')[0].text))
+        tomatometerScore = int(re.sub(r'[^0-9]', '', rtHomeHtml.select('h2.mop-ratings-wrap__score span.mop-ratings-wrap__percentage')[0].text))
 
         reviewList = []
 

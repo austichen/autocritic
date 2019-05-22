@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${movie.imageURL}">
                 </div>
                 <div class="content">
-                    <p class="header">${rating}%</p>
+                    <p class="header">Autocritic rating: ${rating}%</p>
                     <div class="meta">
                         <span class="date">${movie.title}</span>
                     </div>
