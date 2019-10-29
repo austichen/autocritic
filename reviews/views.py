@@ -39,7 +39,7 @@ def movie(request):
         rtHomeHtml = BeautifulSoup(res.text, 'html.parser')
         totalPages = int(rtHtml.select('span.pageInfo')[0].text.split(' ').pop())
         imageUrl = rtHtml.select('.panel-body.content_body img')[0]['src']
-        movieTitle = rtHtml.select('.panel-body.content_body h2 > a')[0].text
+        movieTitle = rtHtml.select('.panel-body.content_body h2 > a')[0].text.strip()
         reviews = rtHtml.select('.review_table .the_review')
         tomatometerScore = int(re.sub(r'[^0-9]', '', rtHomeHtml.select('h2.mop-ratings-wrap__score span.mop-ratings-wrap__percentage')[0].text))
 
@@ -47,7 +47,7 @@ def movie(request):
 
         for review in reviews:
             if len(review.text) > 2:
-                reviewList.append(review.text)
+                reviewList.append(review.text.strip())
 
         for i in range(2, totalPages+1):
             res = requests.get(link + '?page=' + str(i))
@@ -55,7 +55,7 @@ def movie(request):
             reviews = pageHtml.select('#reviews .the_review')
             for review in reviews:
                 if len(review.text) > 2:
-                    reviewList.append(review.text)
+                    reviewList.append(review.text.strip())
 
         f = open('movie_list.txt', 'w', encoding='utf8')
         for (index, review) in enumerate(reviewList):

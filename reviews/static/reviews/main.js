@@ -51,10 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="meta">
                         <span class="date">${movie.title}</span>
                     </div>
-                    <div class="description">
-                        ${getDescriptionText(rating)}\n
-                        Tomatometer Score: ${movie.tomatometerScore}
-                    </div>
+                    <div class="description" style="white-space: pre-line">${getDescriptionText(rating)}\nTomatometer Score: ${movie.tomatometerScore}</div>
                 </div>
                 <div class="extra content">
                     <i class="video"></i>
