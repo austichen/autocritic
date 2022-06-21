@@ -9,7 +9,7 @@ gunicorn==19.9.0
 idna==2.8
 kiwisolver==1.0.1
 matplotlib==3.0.3
-numpy==1.16.2
+numpy==1.22.0
 Pillow==6.0.0
 psycopg2==2.8
 pyparsing==2.3.1
